@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0f766e">
+        <title>Geolocalización Consciente</title>
+        <link rel="manifest" href="./manifest.json">
+        <link rel="apple-touch-icon" href="./icons/icon-192.png">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <main>
+            <h1>Reporte con ubicación</h1>
+            <p class="sub">Adjunta tu ubicación a un reporte, con tu consentimiento.</p>
+
+            <button id="btn-adjuntar" class="primario">Adjuntar mi ubicación</button>
+
+            <section id="tarjeta-prepermiso" class="tarjeta" hidden>
+            <h2>¿Por qué pedimos tu ubicación?</h2>
+            <p>Necesitamos tu ubicación aproximada para adjuntar las coordenadas al reporte técnico y calcular la sucursal más cercana. No se comparte con terceros y puedes usar una zona manual si prefieres.</p>
+            <div class="fila">
+                <button id="btn-confirmar" class="primario">Compartir mi ubicación</button>
+                <button id="btn-cancelar" class="secundario">Ahora no</button>
+            </div>
+            </section>
+
+            <p id="estado" class="estado" hidden role="status"></p>
+
+            <section id="resultado" class="tarjeta" hidden>
+            <h2>Resultado</h2>
+            <span id="r-badge" class="badge"></span>
+            <dl>
+                <dt>Latitud</dt><dd id="r-lat"></dd>
+                <dt>Longitud</dt><dd id="r-lon"></dd>
+                <dt>Precisión (accuracy)</dt><dd id="r-acc"></dd>
+                <dt>Hora de lectura</dt><dd id="r-hora"></dd>
+            </dl>
+            </section>
+
+            <section id="selector-manual" class="tarjeta" hidden>
+            <h2>Plan B: elige tu zona</h2>
+            <p id="ayuda-denegado" hidden>Para reactivar el permiso: toca el candado (o el icono de ajustes) junto a la dirección del sitio → Permisos → Ubicación → Permitir. En iPhone: Ajustes → Safari (o la app instalada) → Ubicación.</p>
+            <form id="form-zona">
+                <label for="zona">Zona o ciudad</label>
+                <select id="zona" required>
+                <option value="">Selecciona...</option>
+                <option>Cuernavaca, Morelos</option>
+                <option>Emiliano Zapata, Morelos</option>
+                <option>Jiutepec, Morelos</option>
+                <option>Cuautla, Morelos</option>
+                <option>Ciudad de México</option>
+                <option>Otra</option>
+                </select>
+                <button class="secundario" type="submit">Usar esta zona</button>
+            </form>
+            <p id="zona-guardada" class="estado ok" hidden></p>
+            </section>
+            <footer class="pie">
+                <p>Estefany Alexa Delgado Heredia</p>
+            </footer>
+        </main>
+
+        <script src="./geo-helper.js"></script>
+        <script src="./app.js"></script>
+    </body>
+</html>
